@@ -226,8 +226,8 @@ waiting for the publish event.
 ......................................................................*)
 
 let receive_report (s : string) : unit =
-                                        add_listener  fun () -> (fakeNewsNetwork s);
-                                        fun () -> (buzzFake s);
+                                        let _ = add_listener publish (fun () -> (fakeNewsNetwork s));
+                                        let _ = add_listener publish (fun () -> (buzzFake s));;
 
 
 
